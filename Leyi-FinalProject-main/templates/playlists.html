@@ -1,0 +1,15 @@
+<html>
+  <head>
+  <title>Spotify Playlists</title>
+  </head>
+  <body>
+    {% if playlists %}
+      <p>Spotify playlists recommended based on your mood and current weather:</p>
+	  <ul>
+	  {% for playlist in playlists %}
+	  <li><a href="{{playlist.external_urls.spotify}}">{{playlist.name}}</a> ({{playlist.tracks.total}} tracks)</li>
+	  {% endfor %}
+  	  </ul>
+    {% endif %}
+  </body>
+</html>

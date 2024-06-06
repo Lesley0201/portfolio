@@ -1,0 +1,39 @@
+<html>
+  <head>
+  <title>Spotify OAuth Example</title>
+  </head>
+  <body>
+    {% if user %}
+      <p>
+      {% if user['img']%}
+          <img src="{{ user['img'] }}" width="25" height="25" />
+      {% endif %} You are logged in as <a href="{{user['profile_url']}}">
+          {{ user['displayname']|escape }}</a>.
+      </p>
+      <form action="/weather&mood" method="get">
+	  <label for="weather-select">Choose the current weather:</label>
+      <select name="weather" id="weather-select">
+        <option value="">--Please choose an option--</option>
+        <option value="Sunny">Sunny</option>
+        <option value="Cloudy">Cloudy</option>
+        <option value="Rainy">Rainy</option>
+        <option value="Foggy">Foggy</option>
+        <option value="Snowy">Foggy</option>
+      </select>
+      <p><label for="mood-select">Choose your mood today:</label>
+      <select name="mood" id="mood-select">
+        <option value="">--Please choose an option--</option>
+        <option value="Happy">Happy</option>
+        <option value="Angry">Angry</option>
+        <option value="Sad">Sad</option>
+        <option value="Anxiety">Anxiety</option>
+        <option value="Excited">Excited</option>
+      </select>
+      <p><input type="submit" value="Go" /></form>
+      <p><a href="/auth/logout">Log out</a></p>
+    {% else %}
+      <p>You are not yet logged into this site</p>
+      <p><a href="/auth/login">Log in to Spotify</a></p>
+    {% endif %}
+  </body>
+</html>
